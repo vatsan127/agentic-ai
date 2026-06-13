@@ -1,0 +1,105 @@
+TOPIC 2: FOUNDATION MODELS, LLMs & HOW THEY GENERATE
+======================================================
+
+This file covers the "what" and the "how":
+  - PART A — the conceptual building blocks: Foundation Models and LLMs.
+  - PART B — the mechanics of how they actually produce output (text & images).
+For practical API concerns (tokens, context windows, NLP terms), see Topic 3.
+For customizing these models (fine-tuning, distillation, pipeline), see Topic 4.
+
+==================================================
+PART A — FOUNDATION MODELS & LLMs (THE "WHAT")
+==================================================
+
+WHAT IS GENERATIVE AI?
+- Generative AI (Gen-AI) is a subset of Deep Learning
+- Used to generate new data that is similar to the data it was trained on
+- Can generate: Text, Image, Audio, Code, Video
+
+FOUNDATION MODEL (FM)
+- A large AI model that is pre-trained on a massive amount of data (text, images, etc.)
+  so it can perform a broad range of general tasks like text generation, summarization,
+  Q&A, image generation, chatbot, and more.
+- Think of it as a base/starting point that you can then customize for your specific needs.
+- Foundation Models are trained on a wide variety of input data
+- The models may cost tens of millions of dollars to train
+- Example: GPT-4o is one of the foundation models behind ChatGPT
+  (ChatGPT has used several OpenAI models over time: GPT-3.5, GPT-4, GPT-4o, and newer)
+- Wide selection of Foundation Models from companies: OpenAI, Meta, Amazon, Google, Anthropic
+- Some are openly available and some are under commercial license only:
+    - Open-source (Apache 2.0): Google BERT
+    - Source-available / free under Meta's own license (NOT strictly OSI open-source): Meta Llama
+    - Commercial license only: OpenAI (GPT), Anthropic (Claude), etc.
+
+  Not all Foundation Models are generative:
+  - Non-Generative FM: Only analyzes/understands data (e.g., BERT — classifies, extracts info)
+  - Generative FM: Analyzes + creates new content (e.g., GPT-4, Claude, Stable Diffusion)
+
+LARGE LANGUAGE MODELS (LLM)
+- A type of Foundation Model specifically designed to understand and generate human-like text
+- Called "Large" because it has billions of parameters and is trained on massive text data
+  (books, articles, websites)
+- Can perform: Translation, Summarization, Question answering, Content creation
+- Notable example: GPT-4 (ChatGPT / OpenAI)
+
+FM vs GenAI vs LLM — HOW THEY RELATE:
+
+  Foundation Model (FM) — the big umbrella of all large pre-trained models
+  ├── Generative FMs — FMs that can CREATE new content (GenAI)
+  │   ├── LLM — generates text (GPT-4, Claude, Llama)
+  │   ├── Image Models — generates images (Stable Diffusion)
+  │   └── Multimodal Models — generates text + images + audio (GPT-4o, Amazon Titan)
+  │
+  └── Non-Generative FMs — FMs that only ANALYZE/UNDERSTAND
+      └── BERT — understands text, classifies, extracts info (but can't create)
+
+  - FM = The broad category of all large pre-trained models
+  - GenAI = A capability — FMs that can generate new stuff
+  - LLM = A specific type of FM focused on text only
+
+  Analogy:
+  - FM = Athletes (all types)
+  - Generative FM = Athletes who can create new plays/moves (creative players)
+  - LLM = Athletes who specialize in cricket (a specific sport — text as the primary data type)
+  - Note: Modern LLMs increasingly handle images/audio too (multimodal — like a cricketer
+    who can also bowl and field well). Pure "text-only" LLMs are becoming rarer.
+
+==================================================
+PART B — HOW GENAI GENERATES OUTPUT (THE "HOW")
+==================================================
+
+This zooms into the mechanics of HOW models actually produce output — useful to
+understand things like temperature, determinism, and why the same prompt can give
+different answers.
+
+HOW LLMs GENERATE TEXT
+- You give the model a prompt (e.g., "After the rain, the streets were...")
+- The model generates a list of possible next words with probabilities:
+    "wet" -> 40%, "flooded" -> 25%, "slippery" -> 15%, "empty" -> 10%, etc.
+- An algorithm selects a word from that list based on probability (randomly)
+- Then repeats for the next word, and the next...
+- This is non-deterministic — the same prompt can produce different text on each call
+  (even for the same user, on repeat calls, when temperature > 0)
+
+  Why this matters when you're building with an LLM:
+    - Setting "temperature" in API calls controls how random this selection is
+      (0 = always pick the top word, 1+ = sampling allowed)
+    - For deterministic outputs (tests, reproducible results): temperature = 0
+    - For creative outputs (marketing copy, brainstorming): higher temperature
+
+GENAI FOR IMAGES
+- Three common task types:
+    - Text -> Image: Generate images from text prompts
+        (e.g., "Generate a blue sky with white clouds")
+    - Image -> Image: Generate images from images
+        (e.g., "Transform this image in Japanese anime style")
+    - Image -> Text: Generate text from images
+        (e.g., "Describe how many apples you see in the picture")
+
+- Image generation uses Diffusion Models (e.g., Stable Diffusion):
+    Training:  Forward diffusion — adds noise to a picture until it becomes pure noise
+    Generating: Reverse diffusion — starts from noise and removes it step by step
+                to create a new image
+
+  Unlike LLMs (which generate token by token), diffusion models generate the whole
+  image at once through a series of denoising steps.

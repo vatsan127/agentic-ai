@@ -1,0 +1,165 @@
+TOPIC 4: CUSTOMIZING & SHIPPING MODELS
+========================================
+
+This file covers two things:
+  - PART A — how to CUSTOMIZE an existing Foundation Model for your use case
+    (fine-tuning, distillation) without training from scratch.
+  - PART B — the END-TO-END GenAI pipeline: the steps to ship a real GenAI product.
+For NLP terms used here (tokenization, embeddings), see Topic 3.
+
+==================================================
+PART A — FINE-TUNING & DISTILLATION
+==================================================
+
+Two broad techniques to customize a Foundation Model:
+- Fine-tuning (adjust the model's weights) — has two flavours:
+    - Supervised fine-tuning — learns from labelled input/output pairs
+    - Reinforcement fine-tuning — learns from a reward function scoring outputs
+- Distillation (make the model smaller and cheaper while keeping most of its behaviour)
+
+FINE-TUNING A MODEL
+- Adapt a copy of a foundation model with your own data
+- Fine-tuning will change the weights of the base foundation model
+- Training data must:
+    Adhere to a specific format (usually prompt/completion pairs, often in JSONL)
+    Be stored somewhere the training job can reach (object storage, dataset hub, etc.)
+- Note: not all models can be fine-tuned — check the model card
+
+SUPERVISED FINE-TUNING
+- Improves the performance of a Model on specific tasks
+- Further trained on a particular field or area of knowledge
+- Uses labeled examples that are input-output pairs
+  Example:
+    {
+      "prompt": "Who is Stephane Maarek?",
+      "completion": "Stephane Maarek is an AWS instructor..."
+    }
+  You give it the question AND the correct answer — so it learns exactly what to say.
+
+REINFORCEMENT FINE-TUNING
+- Improves your FM using feedback-based learning
+- You provide the input data (training data / prompts)
+- You define a Reward Function to evaluate responses and judge which are good
+    Objective tasks -> a deterministic scoring function in code
+                       (e.g., "does the output match the expected JSON schema?")
+    Subjective tasks -> use another model as a judge, given evaluation instructions
+- Model learns iteratively from reward function scores, trying to achieve high scores over time
+
+  Example: Technical customer support chatbot
+    Prompt: "My app is running very slowly"
+    Response 1: "Restart the app" -> Score: 5.0 (helpful but superficial)
+    Response 2: "That sounds frustrating. Can you tell me when it started?" -> Score: 9.0 (empathetic, diagnostic)
+    Response 3: "Please open a support ticket" -> Score: 2.0 (not helpful, pushes work to user)
+    The model learns to give responses like Response 2!
+
+SUPERVISED vs REINFORCEMENT FINE-TUNING (KEY DIFFERENCE)
+- Supervised: You provide BOTH input AND output — model learns exact answers
+- Reinforcement: You provide ONLY input — model generates multiple outputs, gets scored, learns from scores
+
+DISTILLATION
+- Making models smaller and faster
+- Up to 75% less expensive than original models
+- Decrease in accuracy, but potentially acceptable
+- Larger (teacher) model transfers knowledge to a smaller (student) model
+- You provide input data (e.g., prompts)
+- Produces a lighter model with similar behavior to the original
+- Focuses on efficiency, speed, and cost reduction
+
+FINE-TUNING: GOOD TO KNOW
+- Re-training an FM requires a higher budget
+- Supervised Fine-Tuning is usually cheaper (less computation, less data needed)
+- Requires experienced ML engineers to perform the task
+- Running a fine-tuned model is usually more expensive than using the base model
+  (exact pricing model depends on the provider)
+
+FINE-TUNING USE CASES
+- A chatbot with a particular persona or tone, or for a specific purpose
+    (e.g., assisting customers, crafting advertisements)
+- Training with more up-to-date information than what the model previously accessed
+- Training with exclusive data (e.g., your historical emails, customer service records)
+- Targeted use cases (categorization, assessing accuracy)
+
+==================================================
+PART B — END-TO-END GENERATIVE AI PIPELINE
+==================================================
+
+WHAT IS A GENERATIVE AI PIPELINE?
+- A Generative AI pipeline is the set of steps followed to build an end-to-end GenAI software product.
+- The idea: break the problem into sub-problems and develop a step-by-step procedure to solve them.
+- Since language (or image/audio) processing is involved, you also list every form of processing
+  needed at each step. This step-by-step processing of data is what's called a "pipeline".
+- Think of it as an assembly line: raw data enters at one end, a deployed, monitored GenAI
+  application comes out the other end.
+
+THE 7 STAGES OF A GENAI PIPELINE:
+
+  1. Data Acquisition    -> get the raw data
+  2. Data Preparation    -> clean it and make it model-ready
+  3. Feature Engineering -> turn it into numerical / model-friendly features
+  4. Modeling            -> train / fine-tune / prompt the model
+  5. Evaluation          -> measure how good the model is
+  6. Deployment          -> ship it so real users can use it
+  7. Monitoring & Model Updating -> watch it in production and keep it fresh
+
+1. DATA ACQUISITION
+- First step: get the data needed to train / fine-tune / ground the model.
+- Three situations you might be in:
+
+  a) Available Data — you already have files on hand
+     - Formats: CSV, TXT, PDF, DOCS, XLSX
+     - Example: a company already has 5 years of customer support emails in CSV.
+
+  b) Other Data — data exists somewhere, but not with you
+     - Sources: Databases (DB), Internet, APIs, Web Scraping
+     - Example: pull tweets via the Twitter API, or scrape product reviews from an e-commerce site.
+
+  c) No Data — no data exists, you have to create it
+     - Techniques: manual labelling, synthetic data generation, data augmentation
+     - Example: there's no dataset of "polite customer replies in Tamil" — you create one.
+
+  Image Augmentation (a special case of creating more data):
+    - Applies transformations (rotate, flip, crop, change brightness) to existing images
+    - Helps the model generalize and perform better on unseen images
+    - Cheap way to grow a small dataset without collecting new samples
+
+2. DATA PREPARATION
+- Clean and standardize the raw data so it's usable.
+- Typical actions: remove duplicates, fix encoding, drop irrelevant fields, handle missing values,
+  normalize casing / punctuation, strip HTML, etc.
+
+3. FEATURE ENGINEERING
+- Convert prepared data into features the model can actually learn from.
+- For text this usually means tokenization, embeddings, etc.
+  (See Topic 3 for tokenization basics and NLP-specific vocabulary —
+   corpus, vocabulary, document, token, embedding.)
+- For images: resizing, normalization, augmentation.
+- Good features matter more than fancy models.
+
+4. MODELING
+- Pick an approach: train from scratch (rare), fine-tune a foundation model, or just prompt one.
+- For GenAI, you're usually choosing a Foundation Model and either:
+    - Using it as-is with good prompts
+    - Fine-tuning it on your data (see PART A above)
+    - Grounding it with RAG (Retrieval-Augmented Generation)
+
+5. EVALUATION
+- How do you know the model is any good?
+- Use task-appropriate metrics (accuracy, BLEU, ROUGE, human ratings, etc.)
+- For GenAI, evaluation often needs humans or another model acting as a judge, because
+  "quality" is subjective.
+
+6. DEPLOYMENT
+- Put the model behind an API / app / chatbot so real users can reach it.
+- Concerns: latency, cost-per-request, scaling, security, rate limiting.
+
+7. MONITORING AND MODEL UPDATING
+- Models degrade over time (data drift, user behaviour changes, new topics appear).
+- Monitor: accuracy, latency, cost, user feedback, hallucination rate, abuse patterns.
+- Update: retrain, fine-tune again, swap the base model, or refresh the knowledge base.
+
+
+A NOTE ON PIPELINES IN REAL LIFE
+- The stages aren't strictly linear. You'll loop back constantly:
+    - Poor evaluation scores -> back to data prep or modeling
+    - Production issues -> back to monitoring inputs, then back to training data
+- The pipeline is a mental model, not a waterfall.
