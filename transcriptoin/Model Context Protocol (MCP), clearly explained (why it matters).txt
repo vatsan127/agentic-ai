@@ -1,0 +1,453 @@
+00:00 everyone is talking about mcps it's gone
+00:05 completely viral but the reality is most
+00:08 people have no idea what mcps are and
+00:12 what they mean and what are the startup
+00:14 opportunities associated with it so in
+00:17 this episode I brought Professor Ross
+00:20 Mike who is probably the the best
+00:23 explainer of technical Concepts in a
+00:25 really easy way that someone who's
+00:27 non-technical can really understand I
+00:30 brought him on he explains it
+00:31 beautifully in such a short amount of
+00:33 time and if you stick to the end you'll
+00:35 hear a couple of his startup ideas that
+00:38 incorporate mcps so um enjoy the episode
+00:42 and see you
+00:51 soon all right well we got Professor
+00:55 Ross Mike on the Pod um and the reason
+00:59 why we have him is because I don't know
+01:02 what the hell mcps are and I've been
+01:05 seeing it on X and I need a succinct
+01:09 clear Professor Ross Mike
+01:12 explanation um yes I've read a bunch of
+01:15 threads on it and I've seen a couple
+01:17 videos on it but there's nothing like a
+01:18 Ross mic explanation so I'm here for the
+01:22 what do I need to know about mcps and
+01:26 that's that's what that's why you're
+01:27 here thank you for coming on I I I
+01:29 appreciate that thank you very much yeah
+01:31 class is definitely in session I'll just
+01:33 start um sharing my
+01:35 screen okay so understanding
+01:39 mCP um is
+01:42 really um important uh but you'll also
+01:45 realize the benefits and why it's sort
+01:48 of a big deal but not really at the same
+01:50 time you see one of the things in
+01:52 programming land that we have and that
+01:54 programmers love are standards and the
+01:57 reason why standards are important is
+01:59 they allow for us Engineers to build
+02:03 systems that communicate with each other
+02:05 the most popular one that you know you
+02:07 might have heard of or you might not and
+02:09 you don't really need to know the
+02:10 details is rest rest apis and they're
+02:14 basically a standard that every company
+02:17 follows when they construct their apis
+02:21 when they construct their services for
+02:24 me as an engineer to be able to connect
+02:26 with them now understanding that
+02:29 engineering is all about standards and
+02:32 having these formalities we follow to
+02:34 make life easier when we think of in the
+02:38 context of an llm I want you to
+02:40 understand this one important thing llms
+02:42 by themselves are incapable of doing
+02:44 anything meaningful what do I mean by
+02:46 that if you remember the first you know
+02:48 chat gbt 3 or was it 3.5 I'm not sure
+02:51 but if you just open any chat bot and
+02:53 you tell it to send you an email um it
+02:56 won't know how to do that it will just
+02:58 tell you hey I can't send you an email
+02:60 the most you can do with an llm is ask
+03:02 it questions uh maybe ask it to tell you
+03:06 about some historical figure whatever it
+03:08 may be right um llms are truly incapable
+03:12 of doing anything uh meaningful and what
+03:15 I mean by meaningful it'd be nice if you
+03:17 know it could send me an email um if it
+03:20 could um do some specific task on my
+03:23 behalf but the only thing an llm in its
+03:25 current state is good at is predicting
+03:28 the next text right so for example if I
+03:31 say My Big Fat Greek and llm with all
+03:34 the data source with all its training
+03:36 material will determine that the next
+03:38 word is wedding right so this is the
+03:41 most an llm by itself that it could do
+03:45 right the next Evolution was developers
+03:49 figured out how to take llms and combine
+03:52 them with tools and you can think of a
+03:55 tool like an API for example um most of
+03:59 us are aware where chat gbt and these
+04:01 other chat Bots are able to search the
+04:03 internet for example perplexity right
+04:05 perplexity gives you the option to chat
+04:08 with an llm but that llm has the ability
+04:11 to fetch um information from the
+04:13 internet and present that to you the llm
+04:17 itself is not capable of doing that but
+04:19 what they've done is they've constructed
+04:21 a tool they've given the llm access to
+04:25 an external service right and there's
+04:27 plenty of these Services right I think
+04:29 there's Brave search
+04:30 um chat open AI offers an API now so
+04:35 llms have started to become a bit more
+04:37 powerful when we connected tools to them
+04:40 right I can give you an example let's
+04:43 say um let's say every time I get an
+04:47 email I want there to be an entry in a
+04:50 spreadsheet now most of you know there
+04:52 are services like zapier end8 or you
+04:55 know any of those Automation
+04:57 Services if I build out an autom
+05:00 and connect that to my llm it just
+05:03 became a bit more meaningful now that's
+05:06 awesome and cool but it gets really
+05:09 frustrating when you want to build an
+05:12 assistant that does multiple things
+05:14 imagine search the internet um read your
+05:17 emails summarize this you start to
+05:20 become someone who glues a bunch of
+05:22 different tools to these llms and it can
+05:25 get very frustrating very cumbersome if
+05:28 you're wondering why we don't have have
+05:30 an Iron Man level Jarvis assistant is
+05:33 because combining these tools making it
+05:36 work with the llm is one thing but then
+05:39 stacking these tools on top of each
+05:41 other making it cohesive making it work
+05:43 together is a nightmare itself and this
+05:46 is where we're currently at and does
+05:49 before I continue does this make sense
+05:51 this is where we started llms by
+05:53 themselves write me a poem um you know
+05:56 tell me about World War I um and then
+05:59 the second evolution is oh we now have
+06:02 tools right we now have um these things
+06:06 these external services that we can
+06:08 connect to our llm the problem here is
+06:11 they're difficult it's annoying and as
+06:14 someone who works at an AI startup Tempo
+06:17 and we have a lot of tools like for
+06:19 example we do a search um you have to
+06:22 find an external service you have to
+06:24 connect it to the llm and you have to
+06:26 make sure the llm doesn't hallucinate or
+06:28 do something stupid and believe it or
+06:31 not as cool as llms are by themselves
+06:35 they're very very dumb um but these
+06:38 tools make them just a bit more capable
+06:42 so this is where we're at uh Greg we
+06:44 good so far crystal clear I'm loving
+06:47 this beautiful quick break in the Pod to
+06:51 tell you a little bit about startup
+06:53 Empire so startup Empire is my private
+06:56 membership where it's a bunch of people
+06:60 like me like you who want to build out
+07:03 their startup ideas now they're looking
+07:06 for content to help accelerate that
+07:08 they're looking for potential
+07:09 co-founders they're looking for uh
+07:11 tutorials from people like me to come in
+07:15 and tell them how do you do email
+07:16 marketing how do you build an audience
+07:18 how do you go viral on Twitter all these
+07:20 different things that's exactly what
+07:22 startup Empire is and it's for people
+07:25 who want to start a startup but are
+07:27 looking for ideas or it's for people who
+07:30 have a startup but just they're not
+07:31 seeing the traction uh that they need so
+07:35 you can check out the link to Startup
+07:37 empire.co in the description now enters
+07:42 mCP and what does mCP mean I think the
+07:46 simplest way right without getting too
+07:47 technicals I've read the threads too and
+07:49 as a technical person I appreciate it
+07:52 but for the non- Tey I can assume it's
+07:54 frustrating think of it this way think
+07:56 of every tool that I have to connect to
+07:59 to make my llm valuable um as a
+08:02 different language so tool one's English
+08:05 tool two is Spanish tool three is
+08:08 Japanese right and imagine every tool
+08:10 it's its own language and it's not that
+08:13 there isn't a standard for how apis work
+08:16 but every service provider constructs
+08:18 their apis differently there's different
+08:20 information you have to pass there's
+08:22 just various degree of of of of things
+08:26 that you have to set up that again it
+08:28 just feels like gluing
+08:30 a bunch of different things together
+08:32 will it work yes but at scale it gets
+08:35 very diff difficult mCP you can consider
+08:39 it to be a layer between your llm and
+08:43 the services and the tools and this
+08:46 layer translates all those different
+08:49 languages into a unified language that
+08:51 makes complete sense to the llm right so
+08:55 it's the evolution of llm plus tools but
+08:59 in this Evolution it just makes it makes
+09:01 it very simple for the llm to connect
+09:05 and to access different outside
+09:08 resources right because that's what
+09:09 tools are at the end of the day so with
+09:11 mCP I'm able to connect to an outside
+09:15 data source an outside database maybe um
+09:18 a tool like uh convex or superbase right
+09:22 um imagine I I just tell the llm you
+09:24 know what create me a new entry in my
+09:27 database and it it's connected to my
+09:30 database via mCP and it knows exactly
+09:34 what to do and how to do in the second
+09:37 evolution llms and tools there's a lot
+09:39 of manual work that goes on there's a
+09:41 lot of stepbystep planning that you have
+09:44 to do and there's a lot of edge cases
+09:46 where it can fail and this is why again
+09:48 none of us as exciting as the space is
+09:50 none of us have a Jarvis level assistant
+09:52 yet it feels like we're there and we're
+09:55 close but this system makes it so that
+09:59 it's very diff and what's frustrating is
+10:01 this imagine let me think of a simple
+10:04 service a simple like you know tool
+10:07 imagine um every time a slack message
+10:10 comes your llm reads that slack message
+10:13 and it shoots you a text right sounds
+10:16 pretty trivial here's the frustrating
+10:18 part imagine slack updates their API or
+10:21 the text service updates makes a change
+10:25 and let's say that service is connected
+10:27 to other services or you have some sort
+10:29 of like automation step-by-step thing
+10:32 that you've
+10:33 planned it becomes a nightmare it
+10:35 becomes terrifying and this is why even
+10:38 in the age of llms good Engineers will
+10:40 still get paid because stuff like this
+10:42 like this exists but what mCP does it
+10:46 unifies the llm and the service right it
+10:50 creates this this uh layer where the
+10:55 service and the llm can communicate
+10:57 efficiently now
+10:60 let's get into some practicality you can
+11:03 think of the mCP ecosystem as follows
+11:08 you have an mCP client you have the
+11:11 protocol you have an mCP server and you
+11:14 have a service right an mCP client is
+11:17 something like Tempo wind surf
+11:20 cursor and they are basically the client
+11:25 facing side the llm facing side of this
+11:28 ecosystem
+11:30 the protocol again is that two-way
+11:32 connection between the client and the
+11:35 server and the server is what translate
+11:39 translates that external service its
+11:41 capabilities and what it can do to the
+11:44 client and that's why between the mCP
+11:46 client and the mCP server there's the
+11:48 mCP protocol but here's the fascinating
+11:52 part and this is why I think anthropic
+11:54 they're playing 3D chess when they built
+11:56 this is the way this is architected the
+11:60 mCP server is now in the hands of the
+12:03 service provider so if let's say me and
+12:06 Greg run a Dev Tool company right where
+12:10 maybe we're doing a database right like
+12:12 we're like listen we're going to build
+12:14 the best database company in the world
+12:16 and we want people's llms to have access
+12:18 to this database it is now on us to
+12:22 construct this mCP server so that the
+12:25 client can fully access this so
+12:27 anthropic in a way sort of said listen
+12:29 we want our llms to be more powerful
+12:31 more capable uh but it's your job to
+12:34 figure this out and this is why you've
+12:36 noticed all the external service
+12:38 providers are now building different mCP
+12:41 servers they're building out repos and
+12:43 all this stuff right so this is a big
+12:47 deal in a sense where llms are going to
+12:49 be more capable but from a technological
+12:52 perspective all they did was create a
+12:54 standard a standard that it seems like
+12:57 all companies and all Engineers are
+12:59 going to upon because you can construct
+13:02 any system any API however you please
+13:06 the problem is if you want to scale you
+13:08 want to grow you want other developers
+13:10 other businesses to connect and work
+13:12 with your service it has to be in a
+13:14 fashion that makes sense for them
+13:16 imagine if all of us just spoke
+13:18 different languages but standards allow
+13:20 us to communicate in a way that makes
+13:21 sense to all of us and mCP is that for
+13:26 llms because llms by themselves are not
+13:30 that capable they're just they're
+13:32 they're they're they're systems that
+13:34 have great predictability and they know
+13:36 how to predict the next word but when
+13:38 you can when you add this mCP protocol
+13:41 as a whole you now have a way for it to
+13:44 be capable of doing important stuff now
+13:49 understanding all this it's not all
+13:50 sunshine and rainbows there are some
+13:52 technical challenges if you notice if
+13:54 anyone has set up an mCP um server on
+13:58 any of their favorite mCP clients
+13:60 it's annoying um there's a lot of
+14:02 downloading you have to move this file
+14:04 you have to copy this that and the third
+14:06 um and it's a lot of local stuff there
+14:08 are some Kinks that have to be figured
+14:10 out uh but once this is figured out or
+14:13 finalized polished or maybe they update
+14:15 the standard or maybe someone comes up
+14:17 with a better one we start to enter a
+14:19 world where llms start to become more
+14:22 capable and that is literally all what
+14:24 mCP is just making llms more capable
+14:28 we're trying we're doing that with tools
+14:30 right now it's kind of working um but
+14:35 mCP seems to be the next Evolution I
+14:37 think Greg I saw your latest video um
+14:39 Manis Manis is a great example of number
+14:42 two they have tons of tools and kudos to
+14:46 them they've engineer engineered it well
+14:50 in a way where you know they well they
+14:51 work well cohesively I didn't get to try
+14:53 it out so I'm just looking at what
+14:55 people have done but I can tell you this
+14:58 it's a lot lot of engineering hours it's
+15:01 a lot of one change happens something
+15:03 broke someone's on call and not sleeping
+15:06 but with mCP um it's structured in a way
+15:09 where um if we all follow this um
+15:13 standard um the llm will have access to
+15:17 everything it needs um and we will all
+15:19 be happy users so in short that is
+15:22 literally all what mCP is it's not um
+15:25 Einstein's fifth law of physics or
+15:27 anything crazy like that it's literally
+15:29 standard for llms and it's exciting it's
+15:32 something to be excited about um and
+15:35 yeah I hope I hope that clarified I just
+15:37 kept ramling so I apologize for that gr
+15:38 no no this is this is exactly what I
+15:40 wanted I want to end on one question for
+15:43 you so this is now clear to me crystal
+15:46 clear to me what mcps are but my
+15:49 question is well before I even ask my
+15:52 question every time there's been a
+15:54 popularized protocol for example https
+15:58 or uh
+16:00 SMTP
+16:02 um examples like that there's been a lot
+16:05 of big businesses that were created on
+16:06 top of it and there's been basically
+16:08 this like why now you know why this just
+16:12 opening of opportunities yeah the
+16:15 average person listening to this
+16:18 podcast is building out their
+16:20 ideas is this does this matter or you at
+16:24 all for that person like yeah I think
+16:27 that's a great question I think if I
+16:29 were so I'll speak to the technical and
+16:32 the non- technical to the technical
+16:33 there's a lot of things that a technical
+16:35 person can do here I I just don't have
+16:37 time Greg but one thing I was thinking
+16:39 of was like an mCP App Store and I'll
+16:41 just give this idea out for free because
+16:43 this this podcast is all about ideas
+16:45 basically there's a lot of these repos
+16:47 out there um of mCP servers and it'd be
+16:51 cool if someone can go on a site I even
+16:53 bought the domain um it does nothing but
+16:55 again please anybody like steal this
+16:58 idea um um I bought the domain and it'd
+17:01 be cool if someone could um go on U like
+17:06 look at the different mCP servers there
+17:09 they they see the GitHub code and
+17:10 whatever and they can click like install
+17:12 or deploy and they that server is
+17:15 deployed and gives them a specific URL
+17:17 and then they can paste that in an mCP
+17:18 client and work that out so for the
+17:20 technical person if you make millions
+17:23 all I ask is just you know send me ,000
+17:26 but for the non-technical person what I
+17:28 would really focus on is I would just
+17:31 stay up to date with the platforms that
+17:34 are building out mCP capability and just
+17:37 see where the standards are going right
+17:39 because like you said um when these
+17:41 standards are finalized I don't know if
+17:44 mCP has fully won I think it needs to be
+17:47 challenged um or I don't know if
+17:48 anthropic is going to make an update we
+17:50 don't know it's very early but I would
+17:52 say keep very close attention to what
+17:56 the final standard is going to be
+17:58 because once that standard is finalized
+17:60 and all these service providers start to
+18:03 like you know build out their mCP or
+18:05 whatever thing it is you can now start
+18:08 to integrate much seamlessly and much
+18:10 easier right this is why again every
+18:13 week There's a new chatbot interface
+18:14 with new tools and it wins because this
+18:18 part step number two is not easy right
+18:21 especially making it cohesive and making
+18:23 it work fast right like I can sit in two
+18:25 hours and build something like this but
+18:29 building out that user experience making
+18:31 it Flawless limiting the hallucinations
+18:34 it's very very hard I mean this is a lot
+18:36 of the work we do at Tempo but this
+18:41 makes it so that integrating is a lot
+18:44 easier and you can think of these as
+18:47 like Lego pieces that you can continue
+18:49 to stack to stack so for my smart and
+18:53 wise business owners startup uh ideas
+18:56 podcast enjoyers I would really just
+18:59 keep a close attention right I think
+19:01 even for myself I don't think with this
+19:04 mCP stuff we're at a place where any
+19:07 shots can be fired that make um any
+19:10 smart business decision but this is one
+19:12 of those things where you just you sit
+19:13 and you watch and you're just observing
+19:15 and learning and when the right thing at
+19:17 the right time happens you strike so I
+19:20 don't see any crazy business
+19:22 opportunities right now for a
+19:23 non-technical person even for a
+19:25 technical person like imagine if open AI
+19:27 comes with a standard tomorrow and we
+19:29 all just shift to that right it's very
+19:31 early stages but I think understanding
+19:33 how this works means you'll understand
+19:35 how the next thing works and when that
+19:37 becomes fin finalized you hit the ground
+19:40 running amen all
+19:42 right Ross Mike Professor Ross Mike
+19:46 there's no one like you we'll include in
+19:48 the show notes where you can follow him
+19:51 for more really clear explanations
+19:54 around this whole AI coding world and uh
+19:59 dude I'll see you in Miami in a few
+20:00 weeks yeah man I appreciate you I'm
+20:02 booking my flight soon so yeah
+20:04 definitely bro I'll see you soon thank
+20:05 you everybody
