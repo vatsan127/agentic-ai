@@ -18,7 +18,7 @@ meeting.
     - `"understanding"` → `["under", "standing"]` → 2 tokens
 
 !!! tip "Rule of thumb"
-    - 1 token ≈ 4 characters in English (roughly)
+    - 1 token ≈ 4 characters in English (approximate)
     - 1 token ≈ ¾ of a word
 
 Each model can have its **own** tokenization method:

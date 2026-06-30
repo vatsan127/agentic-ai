@@ -54,7 +54,7 @@ But typically:
 - Often has a human in or near the loop (approvals, review).
 - Has guardrails: max steps, allowed tools, stop conditions.
 
-Most "AI agents" you hear about today are **here**.
+Most AI agents in use today sit **here**.
 
 !!! example
     - A coding assistant that, told "fix this failing test", reads files, edits code,
@@ -103,7 +103,8 @@ oversight. On top of agentic capability, it adds:
 
 More autonomy means fewer human checkpoints, so:
 
-- Errors can compound before anyone notices (it kept acting on a wrong assumption).
+- Errors can compound before they are noticed, as the system keeps acting on a wrong
+  assumption.
 - Harder to predict and audit ("why did it do that 40 steps ago?").
 - Bigger blast radius if a tool does something destructive.
 

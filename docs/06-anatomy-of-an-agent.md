@@ -33,7 +33,8 @@ flowchart TB
 
 In chat, the AI hands the work back to you. In an agent, the work comes back done.
 
-- A **chat model** is ping-pong. You ask, it answers, you do the work, you ask again.
+- A **chat model** is a back-and-forth exchange. You ask, it answers, you do the work,
+  you ask again.
 - An **agent** is delegation. You hand over a goal; it plans, picks tools, takes steps,
   and only comes back when the work is done.
 
@@ -133,9 +134,9 @@ Take any one away and you don't have an agent:
 | No tools | It can plan but cannot do anything in the world |
 | No context | It gives generic answers that ignore who you are |
 
-Keep this list in mind whenever an agent surprises you. The surprise usually traces to
-one of these four being wrong — bad context, missing tool, loop ended too early, or the
-model itself made the wrong call.
+When an agent behaves unexpectedly, the cause usually traces to one of these four being
+wrong — bad context, a missing tool, a loop that ended too early, or the model itself
+making the wrong call.
 
 ## The Agent Harness
 
@@ -172,25 +173,26 @@ harness becomes interchangeable.
 
 ## Prompt Engineering vs Context Engineering
 
-A real shift has happened in how people get good results out of LLMs.
+There has been a meaningful shift in how practitioners get good results out of LLMs.
 
-The old hotness — **prompt engineering**:
+The earlier approach — **prompt engineering**:
 
-- Craft the perfect 17-paragraph prompt.
-- "You are a world-class expert in X. Follow these 23 rules. Use this format…"
-- The prompt does all the work. Without it, the model is generic.
+- Craft a long, highly detailed prompt.
+- "You are a world-class expert in X. Follow these rules. Use this format…"
+- The prompt does all the work. Without it, the model produces generic output.
 
-The new hotness — **context engineering**:
+The current approach — **context engineering**:
 
 - Load the agent with rich, accurate background up front.
-- Now prompts can be stupidly simple. "Write a cold email."
-- The model has everything it needs already; it just executes.
+- Prompts can then stay short and simple — "Write a cold email."
+- The model already has what it needs; it simply executes.
 
-Same model, same task, very different result depending on what's in the room:
+The same model and the same task produce very different results depending on the
+context the model is given:
 
 | Setup | Result |
 |---|---|
-| no context + "write a cold email" | generic placeholder text and a barrage of clarifying questions |
+| no context + "write a cold email" | generic placeholder text and numerous clarifying questions |
 | full context + "write a cold email" | on-brand draft for your real ICP, ready to send |
 
 ### The mechanism
@@ -223,8 +225,8 @@ auto-loaded file:
     is the rest of your config split across files. Same idea.
 
 !!! tip "How to write a good context file"
-    Open any chat model and say *"interview me to build my AGENTS.md file."* Let it ask
-    the questions. Paste the result into the file.
+    Open any chat model and say *"interview me to build my AGENTS.md file."* Answer its
+    questions, then paste the result into the file.
 
 !!! info "A side note that matters"
     Chat models like ChatGPT and Claude.ai have an *automatic* cloud-side memory.

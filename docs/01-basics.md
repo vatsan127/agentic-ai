@@ -100,7 +100,7 @@ In set notation: **AI ⊃ ML ⊃ DL ⊃ GenAI**.
 | **AI** | "machines acting smart" |
 | **ML** | "machines learning from data" |
 | **DL** | "machines learning using brain-like networks" |
-| **GenAI** | "machines that can do it all — analyse, predict, AND create new stuff" |
+| **GenAI** | "machines that analyse, predict, **and** create new content" |
 
 ## Supervised vs Unsupervised Learning
 
