@@ -1,9 +1,9 @@
 name: Deploy docs to GitHub Pages
 
-# Rebuild and publish the MkDocs site whenever the docs branch changes.
+# Rebuild and publish the MkDocs site whenever master changes.
 on:
   push:
-    branches: [feature/mkdocs]
+    branches: [master]
   # Lets you trigger a deploy by hand from the Actions tab.
   workflow_dispatch:
 

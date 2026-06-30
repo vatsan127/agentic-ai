@@ -67,13 +67,16 @@ py -m venv .venv
 ## Deployment
 
 The site auto-deploys to GitHub Pages via `.github/workflows/deploy-docs.yml`.
-Every push to `feature/mkdocs` triggers a GitHub Actions run that installs
+Every push to `master` triggers a GitHub Actions run that installs
 `mkdocs-material`, runs `mkdocs build --strict`, and publishes the result to
 `https://vatsan127.github.io/agentic-ai/`. No manual step and no `gh-pages`
-branch — the built site is uploaded straight to Pages as an artifact. The
-workflow can also be run by hand from the repo's Actions tab
-(`workflow_dispatch`). Once the flow is settled, switch the trigger branch to
-`master` so `master` = published.
+branch — the built site is uploaded straight to Pages as an artifact. Work on a
+feature branch, then merge to `master` to publish. The workflow can also be run
+by hand from the repo's Actions tab (`workflow_dispatch`).
+
+One-time setup (done once in the GitHub repo UI): Settings → Pages → Build and
+deployment → Source = "GitHub Actions". The `github-pages` environment allows
+deploys from the default branch (`master`) out of the box.
 
 One-time setup (done once in the GitHub repo UI): Settings → Pages → Build and
 deployment → Source = "GitHub Actions".
