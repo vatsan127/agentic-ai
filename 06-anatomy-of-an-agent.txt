@@ -19,6 +19,27 @@ The cleanest one-line definition:
   CHAT MODEL          ->         AGENT
   question to answer             goal to result
 
+Side by side, the difference is in who does the work:
+
+       CHAT                                AGENT
+  +----------------+                  +----------------+
+  |   You ask      |                  |      You       |
+  +----------------+                  +----------------+
+          |                                   |
+          v                                   v
+  +----------------+                  +----------------+
+  |   AI replies   |                  |     Agent      |  plans & executes
+  +----------------+                  +----------------+
+          |                                   |
+          v                                   v
+  +----------------+                  +----------------+
+  | YOU do the work|                  |     Done       |
+  +----------------+                  +----------------+
+
+  question -> answer                  goal -> result
+
+In chat, the AI hands the work back to you. In an agent, the work comes back done.
+
 - A chat model is ping-pong. You ask, it answers, you do the work, you ask again.
 - An agent is delegation. You hand over a goal; it plans, picks tools, takes steps,
   and only comes back when the work is done.
@@ -40,12 +61,26 @@ THE AGENT LOOP
 An agent is not a single LLM call. Internally it is a loop that runs until the work
 is judged complete:
 
-  +-----------+        +---------+        +-------+
-  |  OBSERVE  | -----> |  THINK  | -----> |  ACT  |
-  +-----------+        +---------+        +-------+
-        ^                                     |
-        |_____________________________________|
-        (acting produces new info -> next observe)
+  +-------+
+  |  You  |  (hand over a goal)
+  +-------+
+      |
+      v
+  +-------------+   next step    +-------------+   task      +------------------+
+  | 1. OBSERVE  | -------------> |  2. THINK   | --------->  | Generate Final   |
+  | read context|               | reason about|  complete   | Response         |
+  | files, prev |               | what to do  |             | (synthesize +    |
+  | tool results|               | next, plan  |             | format answer)   |
+  +-------------+               +-------------+             +------------------+
+       ^                              |                            |
+       |                              | decide action              v
+       | get result                   v                     +------------------+
+       |                        +-------------+              | Output to User   |
+       |                        |  3. ACT     |              +------------------+
+       +----------------------- | call a tool |
+                                | edit a file |
+                                | run command |
+                                +-------------+
 
 - OBSERVE — gather context: the prompt, files in the workspace, results from earlier
   tool calls. Whatever is relevant to the current step.
@@ -57,7 +92,7 @@ is judged complete:
 The exit criteria come from the prompt. "Compile 10 sources and produce a PowerPoint"
 gives the agent a concrete finish line: 10 sources gathered AND PowerPoint exists.
 
-Worked example. Prompt: "build a minimalist portfolio site for Greg Eisenberg, then
+Worked example. Prompt: "build a minimalist portfolio site for Greg Isenberg, then
 host it locally so I can see it."
 
   1.  Observe — prompt loaded; workspace empty; no info on Greg.
@@ -82,7 +117,27 @@ a confused goal.
 THE FOUR COMPONENTS OF AN AGENT
 ==================================================
 
-Every agent is built from exactly four parts:
+Every agent is built from exactly four parts. They all wire into the agent:
+
+  +--------------------+                          +--------------------+
+  | THE LLM            |                          | THE LOOP           |
+  | - reasoning engine |                          | - keeps going      |
+  | - understands lang |                          |   until task done  |
+  | - makes decisions  |\                        /| - doesn't stop     |
+  +--------------------+ \                      / |   after one reply  |
+                          \   +------------+   /   +--------------------+
+                           >--|  AI AGENT  |--<
+                          /   +------------+   \
+  +--------------------+ /                      \ +--------------------+
+  | THE TOOLS          |/                        \| THE CONTEXT        |
+  | - read files       |                          | - CLAUDE.md        |
+  | - run code         |                          | - conversation     |
+  | - search web       |                          |   history          |
+  | - call APIs        |                          | - memory files     |
+  | - edit files       |                          | - skills           |
+  +--------------------+                          +--------------------+
+
+In words:
 
   1. LLM      — the brain. Picks the next step and writes the outputs.
                 (Claude, GPT, Gemini, a local model via Ollama, ...)
@@ -227,6 +282,27 @@ MCP-capable agent can call them without bespoke code.
   Agent -> custom Notion adapter      Agent -> MCP -> Notion
   Agent -> custom Stripe adapter      Agent -> MCP -> Stripe
   (one-off per tool, per agent)       (one protocol, many servers)
+
+Picture the language barrier. Claude speaks English; each tool "speaks" its own
+language. Without a translator, the connections just don't work:
+
+  BEFORE MCPs                             WITH MCPs
+
+  [Notion]          [Gmail]                                    --> [Notion]
+  (Spanish)        (French)                                   /
+       \    X   X   /                                        /
+        \    .--.  /              +--------+   +-----------+/--> [Gmail]
+         `--|Claude|--'           | Claude |-->|    MCP    |
+            |(Eng) |              |(English)|  | Translator|\--> [Slack]
+         .--`------'--.           +--------+   | (speaks   |
+        /    X   X    \                        |  every    |\
+       /              \                        |  language)|  --> [Browser]
+  [Slack]          [Browser]                   +-----------+
+  (Chinese)        (Japanese)
+
+  Claude can't talk to any tool          One translator in the middle, and
+  directly -- X marks a broken,          every tool is reachable. Connect
+  language-barrier link.                 once, call anything.
 
 For a Java dev: MCP is JDBC. Before JDBC, every database had its own driver and
 API and you wrote bespoke client code per database. JDBC standardised the
