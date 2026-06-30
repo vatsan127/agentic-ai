@@ -26,7 +26,7 @@ agentic-ai/
 ├── .gitignore                ← excludes .venv/, site/, .env
 ├── docs/                     ← single source of truth for all notes
 │   ├── index.md              ← landing page
-│   ├── 01-basics.md … 06-anatomy-of-an-agent.md
+│   ├── 01-basics.md … 08-tools-and-mcp.md
 │   └── stylesheets/extra.css ← full-width layout override
 ├── images/                   ← screenshots used while authoring notes
 ├── transcriptoin/            ← raw video transcript(s) behind the notes
@@ -35,8 +35,9 @@ agentic-ai/
 └── site/                     ← gitignored; mkdocs build output
 ```
 
-Notes so far: Phase 0 = notes 1–4 (AI/ML basics → customizing models),
-Phase 1 = notes 5–6 (autonomous-vs-agentic, anatomy of an agent).
+Notes so far: Phase 0 = notes 1–5 (AI/ML basics → customizing models → GenAI
+pipeline), Phase 1 = notes 6–8 (autonomous-vs-agentic, anatomy of an agent,
+tools & MCP).
 
 Future folders — create only when actually used, never as empty placeholders:
 
@@ -99,7 +100,7 @@ Default to small, working examples over large scaffolds.
 
 ## Notes file conventions
 
-All notes live under `docs/` as `.md` files. See `docs/06-anatomy-of-an-agent.md`
+All notes live under `docs/` as `.md` files. See `docs/07-anatomy-of-an-agent.md`
 as the reference for layout style.
 
 - **Filename:** `NN-topic-name.md` (zero-padded, kebab-case), continuing the sequence.

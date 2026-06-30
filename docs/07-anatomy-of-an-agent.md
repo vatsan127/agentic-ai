@@ -4,7 +4,7 @@ What is actually inside an "AI agent"? This note covers the foundational mental 
 the chat-to-agent leap, the loop that drives an agent, the four components every agent
 is built from, the platform it runs on (the "harness"), how to feed it the right
 information (prompt vs. context engineering), and how it reaches out to the world
-(tools and MCP).
+(tools). Tools get their own deeper note next: [Tools & MCP](08-tools-and-mcp.md).
 
 These are Phase 1 building blocks. They are independent of any specific framework — the
 same patterns show up in Claude Code, LangChain, Manus, plain SDK code, anything.
@@ -235,9 +235,10 @@ auto-loaded file:
     this around: memory is **explicit and file-based**. Less magic, but clean separation
     between projects. This is a feature, not a limitation.
 
-## Tools and MCP
+## Tools
 
-Tools are how an agent acts in the world. A tool is a callable function with:
+Tools are how an agent acts in the world — one of the four components above. A tool is a
+callable function with:
 
 - **a name** (e.g. `send_email`)
 - **a description** — what it does (the model reads this to decide when to use it)
@@ -248,54 +249,9 @@ Tools are how an agent acts in the world. A tool is a callable function with:
     A tool is an injected service the model can call. The description and schema are the
     model's view of the interface; the implementation is your code behind it.
 
-**Before MCP.** Every tool needed its own bespoke integration. The model had to "learn
-the language" of each one. Custom adapter code per tool, per agent, per harness.
-
-**After MCP.** Anthropic introduced the **Model Context Protocol (MCP)** as a standard
-that sits between agent and tool. Tools expose themselves through MCP once; any
-MCP-capable agent can call them without bespoke code.
-
-Picture the language barrier. Claude speaks English; each tool "speaks" its own
-language. Without a translator, the connections just don't work. With one MCP
-translator in the middle, every tool is reachable:
-
-```mermaid
-flowchart LR
-    subgraph BEFORE["❌ Before MCPs — every link is a broken language barrier"]
-        direction LR
-        CB["Claude<br/><i>(English)</i>"]
-        CB -. "✗" .-> N1["Notion<br/><i>(Spanish)</i>"]
-        CB -. "✗" .-> G1["Gmail<br/><i>(French)</i>"]
-        CB -. "✗" .-> S1["Slack<br/><i>(Chinese)</i>"]
-        CB -. "✗" .-> B1["Browser<br/><i>(Japanese)</i>"]
-    end
-    subgraph AFTER["✅ With MCPs — one translator, every tool reachable"]
-        direction LR
-        CA["Claude<br/><i>(English)</i>"] --> MCP["MCP Translator<br/><i>speaks every language</i>"]
-        MCP --> N2["Notion"]
-        MCP --> G2["Gmail"]
-        MCP --> S2["Slack"]
-        MCP --> B2["Browser"]
-    end
-```
-
-Connect once, call anything.
-
-!!! note "For a Java dev"
-    MCP is JDBC. Before JDBC, every database had its own driver and API and you wrote
-    bespoke client code per database. JDBC standardised the interface — new databases
-    just ship a JDBC driver and existing code "just works." MCP is doing the same for
-    tools meeting LLMs. Same shape of solution.
-
-Most modern harnesses ship an MCP "marketplace" — one-click connectors for the major
-tools (Gmail, Calendar, Notion, Stripe, GitHub, …). The end-state most people aim for:
-you stop opening individual apps. Everything goes through the agent, which calls the apps
-via MCP.
-
-!!! info
-    In LangChain — introduced in Phase 5 — the equivalent unit is the `@tool`
-    decorator. Same conceptual building block; MCP is the more universal,
-    language-agnostic version.
+A single agent might have dozens of tools, and connecting each one used to mean bespoke
+integration code. The standard that fixed that — and the way tools are wired into agents
+today — is **MCP**, covered in its own note: [Tools & MCP](08-tools-and-mcp.md).
 
 ## What to Hold Onto
 
@@ -305,5 +261,5 @@ via MCP.
 - The **harness** is the runtime. Learn the model, not the harness — they are
   interchangeable.
 - **Context engineering > prompt engineering.** Load context once, keep prompts simple.
-- Tools are how the agent does things. **MCP is the JDBC of tools** — one protocol, many
-  connectors.
+- Tools are how the agent does things — the fourth component. How they're standardised
+  and wired in (MCP) is covered in [Tools & MCP](08-tools-and-mcp.md).

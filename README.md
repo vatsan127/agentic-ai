@@ -4,7 +4,7 @@ A personal, hands-on project to learn **agentic AI** from the ground up — conc
 then Python + LangChain. Built by a Java developer new to AI. The notes are written as a
 documentation site (MkDocs Material) with Mermaid diagrams.
 
-📖 **Read the notes:** topics 1–6 live in [`docs/`](docs/).
+📖 **Read the notes:** topics 1–8 live in [`docs/`](docs/).
 
 ## Project structure
 
@@ -18,9 +18,11 @@ agentic-ai/
 │   ├── 01-basics.md       # AI / ML / DL / GenAI taxonomy
 │   ├── 02-models.md       # Foundation Models, LLMs, how they generate
 │   ├── 03-tokens-and-language.md   # Tokens, context windows, NLP terms
-│   ├── 04-customizing-models.md    # Fine-tuning, distillation, the GenAI pipeline
-│   ├── 05-autonomous-vs-agentic.md # Autonomy spectrum
-│   ├── 06-anatomy-of-an-agent.md   # The agent loop, four components, MCP
+│   ├── 04-customizing-models.md    # Fine-tuning, distillation
+│   ├── 05-genai-pipeline.md        # The 7 stages: raw data → deployed product
+│   ├── 06-autonomous-vs-agentic.md # Autonomy spectrum
+│   ├── 07-anatomy-of-an-agent.md   # The agent loop, four components, harness, context
+│   ├── 08-tools-and-mcp.md         # Tool anatomy and the MCP standard
 │   └── stylesheets/extra.css       # Full-width layout override
 ├── .venv/             # Python virtualenv (gitignored)
 └── site/              # mkdocs build output (gitignored)

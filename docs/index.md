@@ -22,12 +22,14 @@ New here? Work through the topics in order — they build on each other.
 | 1 | [AI & ML Basics](01-basics.md) | AI ⊃ ML ⊃ DL ⊃ GenAI, supervised / unsupervised / self-supervised learning |
 | 2 | [Foundation Models & LLMs](02-models.md) | Foundation models, discriminative vs generative, LLMs, and how text & images are generated |
 | 3 | [Tokens & Language](03-tokens-and-language.md) | Tokenization, context windows, and core NLP vocabulary |
-| 4 | [Customizing Models](04-customizing-models.md) | Fine-tuning, distillation, and the end-to-end GenAI pipeline |
-| 5 | [Autonomous vs Agentic](05-autonomous-vs-agentic.md) | The spectrum of autonomy, and where "agentic" sits |
-| 6 | [Anatomy of an Agent](06-anatomy-of-an-agent.md) | The agent loop, the four components, the harness, context, tools & MCP |
+| 4 | [Customizing Models](04-customizing-models.md) | Fine-tuning, distillation, and when to customize a model |
+| 5 | [GenAI Pipeline](05-genai-pipeline.md) | The 7 stages from raw data to a deployed, monitored GenAI product |
+| 6 | [Autonomous vs Agentic](06-autonomous-vs-agentic.md) | The spectrum of autonomy, and where "agentic" sits |
+| 7 | [Anatomy of an Agent](07-anatomy-of-an-agent.md) | The agent loop, the four components, the harness, context, tools |
+| 8 | [Tools & MCP](08-tools-and-mcp.md) | Tool anatomy, and how MCP standardises wiring tools into agents |
 
 ## Phases
 
-- **Phase 0 — Fundamentals:** Topics 1–4 (the GenAI groundwork).
-- **Phase 1 — From LLM to Agent:** Topics 5–6 (the conceptual leap).
+- **Phase 0 — Fundamentals:** Topics 1–5 (the GenAI groundwork).
+- **Phase 1 — From LLM to Agent:** Topics 6–8 (the conceptual leap).
 - **Phase 2 onward:** Python code begins.

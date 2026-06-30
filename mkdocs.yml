@@ -51,5 +51,7 @@ nav:
   - "Foundation Models & LLMs": 02-models.md
   - "Tokens & Language": 03-tokens-and-language.md
   - "Customizing Models": 04-customizing-models.md
-  - "Autonomous vs Agentic": 05-autonomous-vs-agentic.md
-  - "Anatomy of an Agent": 06-anatomy-of-an-agent.md
+  - "GenAI Pipeline": 05-genai-pipeline.md
+  - "Autonomous vs Agentic": 06-autonomous-vs-agentic.md
+  - "Anatomy of an Agent": 07-anatomy-of-an-agent.md
+  - "Tools & MCP": 08-tools-and-mcp.md
