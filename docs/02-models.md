@@ -152,14 +152,20 @@ answers.
 
 Three common task types:
 
-- **Text → Image** — generate images from text prompts
+- **Text → Image** — generate an image from a text prompt
   (e.g. *"Generate a blue sky with white clouds"*).
-- **Image → Image** — generate images from images
+- **Image → Image** — generate an image from another image
   (e.g. *"Transform this image in Japanese anime style"*).
-- **Image → Text** — generate text from images
-  (e.g. *"Describe how many apples you see in the picture"*).
+- **Image → Text** — describe an image in words
+  (e.g. *"How many apples are in this picture?"*).
 
-Image generation uses **Diffusion Models** (e.g. Stable Diffusion):
+!!! note "Two are generation, one is understanding"
+    The first two **create** a new image — that is true image generation, and it uses
+    diffusion models (below). The third does the opposite: it **reads** an image and
+    produces text. That is an *understanding* task, handled by **multimodal LLMs**
+    (e.g. GPT-4o), not diffusion. It is listed here only because images are involved.
+
+Image generation (the first two) uses **Diffusion Models** (e.g. Stable Diffusion):
 
 ```mermaid
 flowchart LR
@@ -170,6 +176,15 @@ flowchart LR
         NOISE2["Pure noise"] -->|remove noise step by step| IMG2["New image"]
     end
 ```
+
+During **training**, the model is shown countless images with noise progressively
+added, and learns to undo each step. To **generate**, it starts from pure noise and runs
+that learned denoising in reverse until a clean image emerges.
+
+!!! tip "Think of it as"
+    Sculpting from a block of marble. You start with a shapeless block (pure noise) and
+    remove material step by step until the figure hidden inside emerges. Diffusion does
+    the same with noise instead of stone.
 
 !!! info
     Unlike LLMs (which generate token by token), diffusion models generate the **whole

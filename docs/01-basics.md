@@ -164,3 +164,10 @@ person.
     (raw text, raw images): the model learns the distribution of the data itself by
     repeatedly predicting hidden parts of it. This is exactly how an LLM learns language
     before you ever send it a prompt.
+
+    That covers **pre-training** — the first and largest phase. A finished GenAI model is
+    not trained by one method alone: it is then refined with **supervised** fine-tuning
+    on human-labelled examples (and often a further human-feedback step) to make it
+    follow instructions and behave helpfully. So GenAI uses self-supervised *and*
+    supervised learning, at different stages — see [Customizing
+    Models](04-customizing-models.md).
