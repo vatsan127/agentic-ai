@@ -30,6 +30,7 @@ agentic-ai/
 │   └── stylesheets/extra.css ← full-width layout override
 ├── images/                   ← screenshots used while authoring notes
 ├── transcriptoin/            ← raw video transcript(s) behind the notes
+├── .github/workflows/        ← deploy-docs.yml: auto-build + publish to GitHub Pages
 ├── .venv/                    ← gitignored; MkDocs Material lives here
 └── site/                     ← gitignored; mkdocs build output
 ```
@@ -40,7 +41,6 @@ Phase 1 = notes 5–6 (autonomous-vs-agentic, anatomy of an agent).
 Future folders — create only when actually used, never as empty placeholders:
 
 - `code/phase-N-*/` — Python source per roadmap phase.
-- `.github/workflows/deploy-docs.yml` — auto-deploy to GitHub Pages.
 
 ## Commands
 
@@ -64,8 +64,19 @@ py -m venv .venv
 .venv/Scripts/python.exe -m pip install --upgrade pip mkdocs-material
 ```
 
-GitHub Pages deploy is deferred. Plan: `mkdocs gh-deploy` (manually, or via a
-workflow) publishing to `https://vatsan127.github.io/agentic-ai/`.
+## Deployment
+
+The site auto-deploys to GitHub Pages via `.github/workflows/deploy-docs.yml`.
+Every push to `feature/mkdocs` triggers a GitHub Actions run that installs
+`mkdocs-material`, runs `mkdocs build --strict`, and publishes the result to
+`https://vatsan127.github.io/agentic-ai/`. No manual step and no `gh-pages`
+branch — the built site is uploaded straight to Pages as an artifact. The
+workflow can also be run by hand from the repo's Actions tab
+(`workflow_dispatch`). Once the flow is settled, switch the trigger branch to
+`master` so `master` = published.
+
+One-time setup (done once in the GitHub repo UI): Settings → Pages → Build and
+deployment → Source = "GitHub Actions".
 
 ## How to collaborate here
 
