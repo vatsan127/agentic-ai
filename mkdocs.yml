@@ -1,0 +1,56 @@
+site_name: Agentic AI — Learning Notes
+site_description: A hands-on, concepts-first journey into agentic AI (Python + LangChain).
+site_url: https://vatsan127.github.io/agentic-ai/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Roadmap: roadmap.md
+  - "Topic 1 — AI & ML Basics": 01-basics.md
+  - "Topic 2 — Foundation Models & LLMs": 02-models.md
+  - "Topic 3 — Tokens & Language": 03-tokens-and-language.md
+  - "Topic 4 — Customizing Models": 04-customizing-models.md
+  - "Topic 5 — Autonomous vs Agentic": 05-autonomous-vs-agentic.md
+  - "Topic 6 — Anatomy of an Agent": 06-anatomy-of-an-agent.md
