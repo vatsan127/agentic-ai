@@ -117,26 +117,39 @@ Two main flavours of ML, based on whether your training data has labels.
     **Supervised** = learning with a teacher who gives you the answer key.
     **Unsupervised** = learning by spotting patterns, no answer key given.
 
-!!! note "Why this matters for GenAI"
-    Generative models train on HUGE amounts of data — labelling it all is impossible.
-    So GenAI relies on **unsupervised / self-supervised** training over unstructured
-    data (raw text, raw images) to learn the distribution of the data itself.
+### Self-Supervised Learning
 
-## Discriminative vs Generative Models
+There is a third flavour that sits between the two — and it is the one that powers
+large language models.
 
-Two fundamentally different jobs a model can do.
+In **self-supervised learning**, nobody hand-labels the data, but the data still
+provides its own correct answers. You take raw text, hide part of it, and ask the model
+to predict the missing part. The "label" is simply the piece that was hidden — it was
+there all along.
 
-| | Discriminative Model | Generative Model |
-|---|---|---|
-| **Learns** | The boundary *between* classes | The *distribution* of each class (what the data itself looks like) |
-| **Answers** | "Which class is this?" | "Create a new sample like this" |
-| **Flow** | Input → Label | Input (noise or a prompt) → new data sample |
-| **Example** | Given a photo, output "cat" or "dog" | Given random noise, output a realistic cat image |
+- Take the sentence "The cat sat on the **mat**."
+- Hide the last word: "The cat sat on the ___."
+- The model predicts the missing word, then compares against the real one (`mat`) and
+  corrects itself. Repeat across billions of sentences.
+
+No human labelled anything, yet every example has a right answer baked in. That is why
+it is called *self*-supervised: the supervision comes from the data itself, not from a
+person.
+
+| | Supervised | Unsupervised | Self-Supervised |
+|---|---|---|---|
+| **Labels?** | Human-made | None | Made automatically from the data |
+| **Has a "right answer"?** | Yes | No | Yes (the hidden part) |
+| **Typical use** | Classify / predict | Find structure | Pre-train LLMs on raw text |
 
 !!! tip "Think of it as"
-    **Discriminative** = draws the dividing line between cats and dogs.
-    **Generative** = learns what a cat looks like well enough to draw one.
+    Making your own flashcards by covering a word in a sentence you already have. The
+    sentence is both the question *and* the answer key — you don't need a teacher to
+    write the cards for you.
 
-!!! note "Why GenAI models are generative"
-    They don't just classify — they produce new text, images, audio, video, code.
-    That's why they need to learn the underlying distribution, not just the boundary.
+!!! note "Why this matters for GenAI"
+    Generative models train on HUGE amounts of data — labelling it all by hand is
+    impossible. So GenAI relies on **self-supervised** training over unstructured data
+    (raw text, raw images): the model learns the distribution of the data itself by
+    repeatedly predicting hidden parts of it. This is exactly how an LLM learns language
+    before you ever send it a prompt.

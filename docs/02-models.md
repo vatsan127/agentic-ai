@@ -45,6 +45,47 @@ Not all Foundation Models are generative:
 - **Generative FM** — analyzes **and** creates new content (e.g. GPT-4, Claude,
   Stable Diffusion).
 
+That split — analyze vs. create — comes from a deeper distinction in what a model is
+trained to do.
+
+### Discriminative vs Generative Models
+
+Two fundamentally different jobs a model can do. This is the underlying reason a
+foundation model ends up "non-generative" or "generative".
+
+| | Discriminative Model | Generative Model |
+|---|---|---|
+| **Learns** | The boundary *between* classes | The *distribution* of each class (what the data itself looks like) |
+| **Answers** | "Which class is this?" | "Create a new sample like this" |
+| **Flow** | Input → Label | Input (noise or a prompt) → new data sample |
+| **Example** | Given a photo, output "cat" or "dog" | Given random noise, output a realistic cat image |
+
+!!! tip "Think of it as"
+    **Discriminative** = draws the dividing line between cats and dogs.
+    **Generative** = learns what a cat looks like well enough to draw one.
+
+#### Examples of discriminative models
+
+A discriminative model always answers "which category?" or "what value?" for an input it
+is given — it never creates anything new. These are some of the most common ones, and
+you have almost certainly used several today:
+
+- **Spam filter** — email in → "spam" or "not spam".
+- **Image classifier** — photo in → "cat", "dog", or "bird".
+- **Sentiment analysis** — a review in → "positive" or "negative".
+- **Fraud detection** — a card transaction in → "fraud" or "legitimate".
+- **Medical imaging** — a scan in → "tumour" or "no tumour".
+- **House-price prediction** — size, location, rooms in → a number like \$450,000.
+
+The first five sort the input into a category (**classification**); the last predicts a
+number (**regression**). Both are discriminative — neither produces new data, they only
+judge the input they are handed.
+
+!!! note "Why GenAI models are generative"
+    They don't just classify — they produce new text, images, audio, video, code.
+    That's why they need to learn the underlying distribution, not just the boundary.
+    A **Generative FM** is a generative model scaled up to foundation-model size.
+
 ### Large Language Models (LLM)
 
 - A type of Foundation Model specifically designed to understand and generate

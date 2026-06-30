@@ -19,8 +19,8 @@ New here? Work through the topics in order — they build on each other.
 
 | # | Topic | What it covers |
 |---|-------|----------------|
-| 1 | [AI & ML Basics](01-basics.md) | AI ⊃ ML ⊃ DL ⊃ GenAI, supervised vs unsupervised, discriminative vs generative |
-| 2 | [Foundation Models & LLMs](02-models.md) | Foundation models, LLMs, and how text & images are generated |
+| 1 | [AI & ML Basics](01-basics.md) | AI ⊃ ML ⊃ DL ⊃ GenAI, supervised / unsupervised / self-supervised learning |
+| 2 | [Foundation Models & LLMs](02-models.md) | Foundation models, discriminative vs generative, LLMs, and how text & images are generated |
 | 3 | [Tokens & Language](03-tokens-and-language.md) | Tokenization, context windows, and core NLP vocabulary |
 | 4 | [Customizing Models](04-customizing-models.md) | Fine-tuning, distillation, and the end-to-end GenAI pipeline |
 | 5 | [Autonomous vs Agentic](05-autonomous-vs-agentic.md) | The spectrum of autonomy, and where "agentic" sits |
