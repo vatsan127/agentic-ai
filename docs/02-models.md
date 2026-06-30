@@ -1,4 +1,4 @@
-# Topic 2: Foundation Models, LLMs & How They Generate
+# Foundation Models, LLMs & How They Generate
 
 This topic covers the "what" and the "how":
 

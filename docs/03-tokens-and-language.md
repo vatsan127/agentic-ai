@@ -1,4 +1,4 @@
-# Topic 3: Tokens, Context Windows & NLP Terms
+# Tokens, Context Windows & NLP Terms
 
 This topic covers the practical "text mechanics" that affect anything you build with an
 LLM API: how text is chopped into **tokens** (which drives pricing), how much the model

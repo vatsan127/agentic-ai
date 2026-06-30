@@ -13,8 +13,7 @@ new to AI and picking up Python along the way.
 
 ## Where to start
 
-New here? Read the [Roadmap](roadmap.md) first — it lays out the full phase-by-phase
-plan. Then work through the topics in order.
+New here? Work through the topics in order — they build on each other.
 
 ## Topics
 
@@ -31,4 +30,4 @@ plan. Then work through the topics in order.
 
 - **Phase 0 — Fundamentals:** Topics 1–4 (the GenAI groundwork).
 - **Phase 1 — From LLM to Agent:** Topics 5–6 (the conceptual leap).
-- **Phase 2 onward:** Python code begins. See the [Roadmap](roadmap.md).
+- **Phase 2 onward:** Python code begins.

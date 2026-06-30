@@ -1,4 +1,4 @@
-# Topic 5: Autonomous AI vs Agentic AI
+# Autonomous AI vs Agentic AI
 
 These two terms get used interchangeably, but they are **not** the same thing. The
 cleanest way to understand them is as a **spectrum of autonomy** — how much the system

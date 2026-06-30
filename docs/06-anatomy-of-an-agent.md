@@ -1,4 +1,4 @@
-# Topic 6: Anatomy of an Agent
+# Anatomy of an Agent
 
 What is actually inside an "AI agent"? This note covers the foundational mental model:
 the chat-to-agent leap, the loop that drives an agent, the four components every agent
@@ -291,9 +291,9 @@ you stop opening individual apps. Everything goes through the agent, which calls
 via MCP.
 
 !!! info
-    In LangChain — which the [Roadmap](roadmap.md) introduces in Phase 5 — the
-    equivalent unit is the `@tool` decorator. Same conceptual building block; MCP is the
-    more universal, language-agnostic version.
+    In LangChain — introduced in Phase 5 — the equivalent unit is the `@tool`
+    decorator. Same conceptual building block; MCP is the more universal,
+    language-agnostic version.
 
 ## What to Hold Onto
 

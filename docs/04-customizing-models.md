@@ -1,4 +1,4 @@
-# Topic 4: Customizing & Shipping Models
+# Customizing & Shipping Models
 
 This topic covers two things:
 

@@ -1,56 +1,46 @@
 # Agentic AI — Learning Project
 
-A personal, hands-on journey to learn **agentic AI**, built for a Java developer who is
-new to AI and picking up Python along the way.
+A personal, hands-on project to learn **agentic AI** from the ground up — concepts first,
+then Python + LangChain. Built by a Java developer new to AI. The notes are written as a
+documentation site (MkDocs Material) with Mermaid diagrams.
 
-- **Language/stack:** Python + **LangChain**
-- **Approach:** concepts first → raw API understanding → LangChain abstractions
-- **Pace:** ~1 hour/day
-- **Goal:** deeply understand how agents work *and* become fluent in Python + LangChain
-
-See [`ROADMAP.md`](./ROADMAP.md) for the full phase-by-phase plan and checklist.
-
----
+📖 **Read the notes:** topics 1–6 live in [`docs/`](docs/).
 
 ## Project structure
 
 ```
 agentic-ai/
-├── README.md                     # This file — overview & structure
-├── ROADMAP.md                    # The full learning plan & checklist (start here)
-│
-├── 01-basics.txt                 # Phase 0 — AI / ML / DL / GenAI taxonomy,
-│                                 #   supervised vs unsupervised, discriminative vs generative
-├── 02-models.txt                 # Phase 0 — Foundation Models, LLMs, and how they generate
-│                                 #   (text token-by-token, images via diffusion)
-├── 03-tokens-and-language.txt    # Phase 0 — tokens, context windows, and core NLP terms
-│                                 #   (corpus, document, vocabulary, token, embedding, vector)
-├── 04-customizing-models.txt     # Phase 0 — fine-tuning & distillation, and the
-│                                 #   end-to-end GenAI pipeline (7 stages)
-│
-└── 05-autonomous-vs-agentic.txt  # Phase 1 — autonomous AI vs agentic AI: the
-                                  #   spectrum of autonomy, comparison, and guardrails
+├── README.md          # This file
+├── CLAUDE.md          # Guidance for Claude Code
+├── mkdocs.yml         # Site config (theme, nav, Mermaid)
+├── docs/              # All notes (single source of truth)
+│   ├── index.md           # Landing page
+│   ├── 01-basics.md       # AI / ML / DL / GenAI taxonomy
+│   ├── 02-models.md       # Foundation Models, LLMs, how they generate
+│   ├── 03-tokens-and-language.md   # Tokens, context windows, NLP terms
+│   ├── 04-customizing-models.md    # Fine-tuning, distillation, the GenAI pipeline
+│   ├── 05-autonomous-vs-agentic.md # Autonomy spectrum
+│   ├── 06-anatomy-of-an-agent.md   # The agent loop, four components, MCP
+│   └── stylesheets/extra.css       # Full-width layout override
+├── .venv/             # Python virtualenv (gitignored)
+└── site/              # mkdocs build output (gitignored)
 ```
 
-> Code and further notes are added per phase as the roadmap progresses (Phase 2 onward).
+## Setup
 
----
+Create the virtualenv and install MkDocs Material (one-time):
 
-## Phase 0 — Fundamentals (notes above)
+```bash
+py -m venv .venv
+.venv/Scripts/python.exe -m pip install --upgrade pip mkdocs-material
+```
 
-The `0X-*.txt` files are the GenAI fundamentals, written up by the learner (revised from
-an earlier `generative-ai-fundamentals` study repo). They are prerequisites for the
-agentic material and make this repo self-contained.
+## Run
 
-Notes conventions:
-- Title at top in ALL CAPS with an `===` underline
-- Section headers in ALL CAPS
-- `-` for bullets; two-space indent for sub-bullets
-- ASCII/indented diagrams, no images
-- "Think of it as…" analogies; Java-dev framing where useful
+```bash
+# Live dev server with hot reload → http://127.0.0.1:8000/agentic-ai/
+.venv/Scripts/python.exe -m mkdocs serve
 
-## Phases 1+ — Agentic AI (guided)
-
-The guided track starts at **Phase 1** (the LLM → Agent conceptual leap) and runs through
-setup, plain LLM calls, conversation/memory, tools, the agent loop, and beyond. Details
-and the checklist live in [`ROADMAP.md`](./ROADMAP.md).
+# Static build to site/
+.venv/Scripts/python.exe -m mkdocs build
+```

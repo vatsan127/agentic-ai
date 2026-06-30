@@ -1,4 +1,4 @@
-# Topic 1: AI & ML Basics
+# AI & ML Basics
 
 ## What Is AI?
 

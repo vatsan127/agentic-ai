@@ -47,10 +47,9 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Roadmap: roadmap.md
-  - "Topic 1 — AI & ML Basics": 01-basics.md
-  - "Topic 2 — Foundation Models & LLMs": 02-models.md
-  - "Topic 3 — Tokens & Language": 03-tokens-and-language.md
-  - "Topic 4 — Customizing Models": 04-customizing-models.md
-  - "Topic 5 — Autonomous vs Agentic": 05-autonomous-vs-agentic.md
-  - "Topic 6 — Anatomy of an Agent": 06-anatomy-of-an-agent.md
+  - "AI & ML Basics": 01-basics.md
+  - "Foundation Models & LLMs": 02-models.md
+  - "Tokens & Language": 03-tokens-and-language.md
+  - "Customizing Models": 04-customizing-models.md
+  - "Autonomous vs Agentic": 05-autonomous-vs-agentic.md
+  - "Anatomy of an Agent": 06-anatomy-of-an-agent.md
