@@ -32,3 +32,5 @@ sequenceDiagram
 
 - "Why this matters for GenAI?" this should be moved to next file from AI & ML basics
 - discriminative models are created with the supervised and unsupervised learning only ?
+- Remove the ROADMAP.md file from the project
+- Readme should contain the live github page link https://vatsan127.github.io/agentic-ai/
