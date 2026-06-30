@@ -102,25 +102,36 @@ In set notation: **AI ⊃ ML ⊃ DL ⊃ GenAI**.
 | **DL** | "machines learning using brain-like networks" |
 | **GenAI** | "machines that analyse, predict, **and** create new content" |
 
-## Supervised vs Unsupervised Learning
+## Types of Machine Learning
 
-Two main flavours of ML, based on whether your training data has labels.
+There are three main flavours of ML, separated by where the "correct answers" come from
+during training: a human, nobody, or the data itself.
 
-| | Supervised Learning | Unsupervised Learning |
-|---|---|---|
-| **Data** | Comes with labels (correct answers) | No labels — only the inputs |
-| **What it learns** | A mapping from input → known output | Structure / patterns on its own |
-| **Used for** | Classification (predict a category), Regression (predict a number) | Clustering (group similar things), dimensionality reduction |
-| **Example** | 10,000 emails tagged "spam"/"not spam" → predicts the tag on new emails | Group customers by shopping behaviour without telling it which group is which |
+### Supervised Learning
 
-!!! tip "Think of it as"
-    **Supervised** = learning with a teacher who gives you the answer key.
-    **Unsupervised** = learning by spotting patterns, no answer key given.
+In **supervised learning**, the training data comes with labels — the correct answers a
+human (or an existing system) has attached. You show the model 10,000 emails each tagged
+"spam" or "not spam", and it learns the mapping from input to known output. Once trained,
+it predicts the label for new, unseen emails.
+
+It is used for two kinds of task: **classification** (predict a category — "spam" vs
+"not spam") and **regression** (predict a number — tomorrow's temperature). The labels
+act like a teacher's answer key: every example carries its correct answer, so the model
+can check itself and improve.
+
+### Unsupervised Learning
+
+In **unsupervised learning**, the data has no labels — only the raw inputs. There is no
+"right answer" to predict. Instead the model finds structure on its own: grouping
+similar items together (**clustering**) or simplifying complex data while keeping what
+matters (**dimensionality reduction**). For example, grouping customers by shopping
+behaviour without anyone telling it which group is which, or what to call them — like
+sorting a pile of photos into groups that "look alike" with no categories given upfront.
 
 ### Self-Supervised Learning
 
-There is a third flavour that sits between the two — and it is the one that powers
-large language models.
+The third flavour sits between the two — and it is the one that powers large language
+models.
 
 In **self-supervised learning**, nobody hand-labels the data, but the data still
 provides its own correct answers. You take raw text, hide part of it, and ask the model
