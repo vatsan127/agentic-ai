@@ -13,14 +13,13 @@ code — clarity and explanation beat cleverness or optimization.
 - Approach: concepts first → raw provider SDK → LangChain abstractions.
 - Pace: ~1 hour/day, phase by phase.
 
-Authoritative plan: [`ROADMAP.md`](./ROADMAP.md). Overview: [`README.md`](./README.md).
+Overview: [`README.md`](./README.md).
 
 ## Project structure
 
 ```
 agentic-ai/
 ├── README.md                 ← repo intro (structure + setup + run)
-├── ROADMAP.md                ← the learning plan & checklist (authoritative)
 ├── CLAUDE.md                 ← this file
 ├── mkdocs.yml                ← site config: theme, nav, Markdown extensions
 ├── .gitignore                ← excludes .venv/, site/, .env
@@ -41,7 +40,7 @@ tools & MCP).
 
 Future folders — create only when actually used, never as empty placeholders:
 
-- `code/phase-N-*/` — Python source per roadmap phase.
+- `code/phase-N-*/` — Python source per learning phase.
 
 ## Commands
 
@@ -84,12 +83,12 @@ deployment → Source = "GitHub Actions".
 
 ## How to collaborate here
 
-Per the roadmap's "How we'll work each session":
+How we work each session:
 
 1. Explain the concept first (everyday analogies welcome).
 2. Write a small, runnable snippet (from Phase 2 onward).
 3. Run it, observe, discuss what happened.
-4. Tick the box in `ROADMAP.md`. Move to the next item.
+4. Move to the next item.
 
 Be willing to **teach** as you go. The user is new to AI and to Python. Don't
 assume familiarity with LangChain, agent loops, embeddings, or vector stores —
@@ -129,8 +128,8 @@ Tone is professional and explanatory — teaching voice is fine, slang is not.
 - Don't commit secrets. API keys belong in `.env` (gitignored) once Phase 2 lands.
 - Don't create new Markdown docs (design notes, summaries, plans) unless asked.
 - Don't create empty placeholder folders before they are actually needed.
-- Don't reformat or restructure `README.md` / `ROADMAP.md` without being asked —
-  they reflect the learner's voice.
+- Don't reformat or restructure `README.md` without being asked — it reflects the
+  learner's voice.
 
 ## Keep this file current
 

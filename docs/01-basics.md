@@ -158,16 +158,5 @@ person.
     sentence is both the question *and* the answer key — you don't need a teacher to
     write the cards for you.
 
-!!! note "Why this matters for GenAI"
-    Generative models train on HUGE amounts of data — labelling it all by hand is
-    impossible. So GenAI relies on **self-supervised** training over unstructured data
-    (raw text, raw images): the model learns the distribution of the data itself by
-    repeatedly predicting hidden parts of it. This is exactly how an LLM learns language
-    before you ever send it a prompt.
-
-    That covers **pre-training** — the first and largest phase. A finished GenAI model is
-    not trained by one method alone: it is then refined with **supervised** fine-tuning
-    on human-labelled examples (and often a further human-feedback step) to make it
-    follow instructions and behave helpfully. So GenAI uses self-supervised *and*
-    supervised learning, at different stages — see [Customizing
-    Models](04-customizing-models.md).
+Self-supervised learning is what makes GenAI possible at scale — how that plays out in
+practice is covered in [Foundation Models & LLMs](02-models.md).

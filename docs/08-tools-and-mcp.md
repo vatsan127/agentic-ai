@@ -62,6 +62,67 @@ Connect once, call anything.
     just ship a JDBC driver and existing code "just works." MCP is doing the same for
     tools meeting LLMs. Same shape of solution.
 
+## How a tool call actually flows
+
+The before/after picture above is conceptual. Here is what really happens end to end,
+in two phases: first the agent *discovers* what tools exist, then at runtime it *calls*
+one. The pieces involved:
+
+- **AI Client Application** — the harness (e.g. Claude Code) that runs the loop.
+- **LLM** — the brain that decides *which* tool to call.
+- **MCP Client** — whatever speaks the MCP protocol to the server. This is a *role*, not
+  a mandatory separate program: the client application usually plays it itself. It is
+  drawn as its own lane below only to make the protocol boundary easy to see.
+- **MCP Server** — the tool's side; exposes the tools and runs their code.
+- **External Tool** — the actual API or database behind it.
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Client as AI Client Application
+    participant LLM as LLM (Brain)
+    participant MCPC as MCP Client
+    participant MCPS as MCP Server (Hand)
+    participant Tool as External Tool (API/DB)
+
+    Note over Client, Tool: Phase 1 — Initialization & Discovery
+    Client->>MCPC: Connect & request tools
+    MCPC->>MCPS: JSON-RPC: initialize (stdio/SSE)
+    MCPS-->>MCPC: JSON-RPC: response (list of tools)
+    MCPC-->>Client: Available tools list
+    Client->>LLM: Update context with available tools
+
+    Note over User, Tool: Phase 2 — Runtime Tool Calling
+    User->>Client: "Check my recent food orders"
+    Client->>LLM: Send prompt + available tools
+    LLM-->>Client: Structured command: run get_recent_orders
+    Client->>MCPC: Delegate tool call: get_recent_orders
+    MCPC->>MCPS: JSON-RPC: call_tool (name, parameters)
+    MCPS->>Tool: Execute the implementation code
+    Tool-->>MCPS: Return raw JSON data
+    MCPS-->>MCPC: JSON-RPC: response (result data)
+    MCPC-->>Client: Pass result data (JSON)
+    Client->>LLM: System message with result data
+    LLM-->>Client: Synthesize natural-language response
+    Client-->>User: "Your last order was a pizza — it's out for delivery."
+```
+
+Two things worth noticing:
+
+- **The LLM never touches the tool directly.** It only emits a *structured command*
+  ("call `get_recent_orders`"); the client application does the actual calling (over
+  MCP). This is the same act-observe split from the [agent
+  loop](07-anatomy-of-an-agent.md#the-agent-loop).
+- **Discovery happens first.** The model can only call tools it was told about in
+  Phase 1. If a tool isn't in that list, the model doesn't know it exists — which is why
+  a mis-configured MCP server shows up as "the agent won't use my tool."
+
+!!! note "For a Java dev"
+    **JSON-RPC** is just a simple request/response convention over a transport (here,
+    `stdio` — standard input/output pipes — or `SSE`, server-sent events over HTTP).
+    Think of it as a lightweight RPC call: a JSON message names a method and its
+    parameters, and a JSON message comes back with the result. No heavy framework.
+
 ## The marketplace, and where this is heading
 
 Most modern harnesses ship an MCP "marketplace" — one-click connectors for the major

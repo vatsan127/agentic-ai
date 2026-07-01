@@ -17,6 +17,21 @@ For practical API concerns (tokens, context windows, NLP terms), see
 - Used to generate new data that is similar to the data it was trained on.
 - Can generate: text, image, audio, code, video.
 
+!!! note "How GenAI is trained"
+    Generative models train on HUGE amounts of data — labelling it all by hand is
+    impossible. So GenAI relies on **self-supervised** training over unstructured data
+    (raw text, raw images): the model learns the distribution of the data itself by
+    repeatedly predicting hidden parts of it (see [self-supervised
+    learning](01-basics.md#self-supervised-learning)). This is exactly how an LLM learns
+    language before you ever send it a prompt.
+
+    That covers **pre-training** — the first and largest phase. A finished GenAI model is
+    not trained by one method alone: it is then refined with **supervised** fine-tuning
+    on human-labelled examples (and often a further human-feedback step) to make it
+    follow instructions and behave helpfully. So GenAI uses self-supervised *and*
+    supervised learning, at different stages — see [Customizing
+    Models](04-customizing-models.md).
+
 ### Foundation Model (FM)
 
 - A large AI model that is **pre-trained on a massive amount of data** (text, images,
@@ -80,6 +95,15 @@ you have almost certainly used several today:
 The first five sort the input into a category (**classification**); the last predicts a
 number (**regression**). Both are discriminative — neither produces new data, they only
 judge the input they are handed.
+
+!!! note "How are discriminative models trained?"
+    Usually **supervised** — you need labelled examples ("this photo is a cat") for the
+    model to learn where the boundary between classes lies. But not *only* supervised: a
+    discriminative model can also be trained **self-supervised**, where the data creates
+    its own labels. BERT is the classic example — it learns by predicting masked words in
+    raw text, yet its job is to *understand and classify*, not generate. So the split is
+    supervised vs. self-supervised, not "supervised and unsupervised". Pure unsupervised
+    learning has no labels at all, so it is not how you train a classifier.
 
 !!! note "Why GenAI models are generative"
     They don't just classify — they produce new text, images, audio, video, code.

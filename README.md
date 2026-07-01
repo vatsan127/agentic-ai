@@ -4,7 +4,8 @@ A personal, hands-on project to learn **agentic AI** from the ground up — conc
 then Python + LangChain. Built by a Java developer new to AI. The notes are written as a
 documentation site (MkDocs Material) with Mermaid diagrams.
 
-📖 **Read the notes:** topics 1–8 live in [`docs/`](docs/).
+📖 **Read the notes:** live at **<https://vatsan127.github.io/agentic-ai/>** — topics
+1–8, with source under [`docs/`](docs/).
 
 ## Project structure
 
