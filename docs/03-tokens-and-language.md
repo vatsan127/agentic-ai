@@ -89,3 +89,13 @@ flowchart LR
     D --> T["Tokens<br/><i>one word-chunk</i>"]
     T --> E["Embeddings / Vectors<br/><i>its meaning as numbers</i>"]
 ```
+
+## Key Takeaways
+
+- A **token** is a chunk of text (word or subword); models bill per token, so tokens
+  drive cost. Rule of thumb: 1 token ≈ 4 characters ≈ ¾ of a word.
+- The **context window** is how many tokens a model can consider at once — input *and*
+  output together. Exceeding it causes "prompt too long" errors.
+- An **embedding** turns text into a vector of numbers that captures meaning; similar
+  meanings sit close together. This powers semantic search and RAG.
+- The nesting to remember: **corpus → documents → tokens → embeddings**.

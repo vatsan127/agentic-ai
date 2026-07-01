@@ -4,8 +4,8 @@ This topic covers how to **customize** an existing Foundation Model for your use
 fine-tuning and distillation — without training one from scratch.
 
 Customizing is just one step in shipping a real product. For the full sequence from raw
-data to a deployed application, see [GenAI Pipeline](05-genai-pipeline.md). For NLP terms
-used here (tokenization, embeddings), see [Tokens & Language](03-tokens-and-language.md).
+data to a deployed application, see [GenAI Pipeline](05-genai-pipeline.md). For the NLP
+vocabulary (tokens, embeddings), see [Tokens & Language](03-tokens-and-language.md).
 
 ## Fine-Tuning & Distillation
 
@@ -96,3 +96,14 @@ You give it the question **and** the correct answer — so it learns exactly wha
 - Training with more up-to-date information than the model previously accessed.
 - Training with **exclusive** data (your historical emails, customer service records).
 - Targeted use cases (categorization, assessing accuracy).
+
+## Key Takeaways
+
+- **Fine-tuning** adapts a copy of a foundation model by changing its weights on your
+  data; **distillation** shrinks a big model into a smaller, cheaper one.
+- **Supervised fine-tuning** learns from input/output pairs you provide; **reinforcement
+  fine-tuning** learns from a reward function scoring the outputs it generates.
+- Fine-tuning needs formatted data, budget, and ML expertise — and a fine-tuned model
+  usually costs more to run than the base model.
+- Customizing is one step; the full path from data to product is the
+  [GenAI Pipeline](05-genai-pipeline.md).

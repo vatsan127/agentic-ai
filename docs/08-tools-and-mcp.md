@@ -5,7 +5,7 @@ agent](07-anatomy-of-an-agent.md). This note goes deeper: how tools were wired i
 agents before, the problem that created, and the standard that solved it — the **Model
 Context Protocol (MCP)**.
 
-## What a tool is (recap)
+## What a tool is
 
 A tool is a callable function with:
 

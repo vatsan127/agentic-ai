@@ -1,5 +1,9 @@
 # AI & ML Basics
 
+This note lays the groundwork: what AI, machine learning, deep learning, and generative
+AI actually are, how they nest inside one another, and the core training styles that make
+them work. Everything later in these notes builds on this vocabulary.
+
 ## What Is AI?
 
 - AI (Artificial Intelligence) is the ability of machines/computers to do tasks that
@@ -160,3 +164,13 @@ person.
 
 Self-supervised learning is what makes GenAI possible at scale — how that plays out in
 practice is covered in [Foundation Models & LLMs](02-models.md).
+
+## Key Takeaways
+
+- The nesting is **AI ⊃ ML ⊃ DL ⊃ GenAI** — each a more specialised subset of the last.
+- **ML** learns patterns from data; **DL** stacks layers for hard tasks (images, voice);
+  **GenAI** goes further and *creates* new content.
+- Three training styles by where the answers come from: **supervised** (human labels),
+  **unsupervised** (no labels), **self-supervised** (labels from the data itself).
+- **Discriminative** models judge input ("which class?"); **generative** models produce
+  new samples. GenAI is the generative kind.

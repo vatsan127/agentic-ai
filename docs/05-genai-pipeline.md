@@ -77,7 +77,8 @@ prompt one. For GenAI, you're usually choosing a Foundation Model and either:
 
 - Using it as-is with good prompts.
 - Fine-tuning it on your data (see [Customizing Models](04-customizing-models.md)).
-- Grounding it with **RAG** (Retrieval-Augmented Generation).
+- Grounding it with **RAG** (Retrieval-Augmented Generation) — fetching relevant
+  documents at query time and feeding them to the model so it answers from your data.
 
 ### 5. Evaluation
 
@@ -107,3 +108,14 @@ latency, cost-per-request, scaling, security, rate limiting.
     - Production issues → back to monitoring inputs, then back to training data.
 
     The pipeline is a mental model, not a waterfall.
+
+## Key Takeaways
+
+- A **GenAI pipeline** breaks "ship a product" into stages, each with its own data
+  processing — like an assembly line from raw data to a deployed app.
+- The **7 stages:** data acquisition → preparation → feature engineering → modeling →
+  evaluation → deployment → monitoring & updating.
+- **Modeling** is where you choose prompt-only, fine-tuning, or RAG — customizing (the
+  previous note) lives here, as one option among several.
+- The stages **loop**, not flow once: poor evaluation or production drift sends you back
+  to earlier stages.

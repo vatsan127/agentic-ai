@@ -237,23 +237,13 @@ auto-loaded file:
 
 ## Tools
 
-Tools are how an agent acts in the world — one of the four components above. A tool is a
-callable function with:
+Tools are how an agent acts in the world — one of the four components above. Each tool is
+a callable function the model can invoke: search the web, write a file, send an email,
+query a database. A single agent may have dozens, and connecting each one used to mean
+bespoke integration code. The standard that fixed that — and how tools are defined and
+wired into agents today — gets its own note: [Tools & MCP](08-tools-and-mcp.md).
 
-- **a name** (e.g. `send_email`)
-- **a description** — what it does (the model reads this to decide when to use it)
-- **a parameter schema** — what arguments it takes
-- **an implementation** — your code, or somebody else's, that actually runs
-
-!!! note "For a Java dev"
-    A tool is an injected service the model can call. The description and schema are the
-    model's view of the interface; the implementation is your code behind it.
-
-A single agent might have dozens of tools, and connecting each one used to mean bespoke
-integration code. The standard that fixed that — and the way tools are wired into agents
-today — is **MCP**, covered in its own note: [Tools & MCP](08-tools-and-mcp.md).
-
-## What to Hold Onto
+## Key Takeaways
 
 - **Agent = goal-to-result.** The leap from chat is the loop and the autonomy.
 - The loop is **Observe → Think → Act → repeat → stop** on completion criteria.

@@ -10,7 +10,7 @@ everything that follows: tools, the agent loop, and multi-agent systems.
 ## The Starting Point: A Plain LLM
 
 - A plain LLM just talks. You send text, it sends text back. (See
-  [Topic 2](02-models.md).)
+  [Foundation Models & LLMs](02-models.md).)
 - It does **not** do anything in the world — no calling APIs, no running code, no
   deciding what to do next. It has no tools and no loop.
 

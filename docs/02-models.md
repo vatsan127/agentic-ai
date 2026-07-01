@@ -6,8 +6,8 @@ This topic covers the "what" and the "how":
 - **Part B** — the mechanics of how they actually produce output (text & images).
 
 For practical API concerns (tokens, context windows, NLP terms), see
-[Topic 3](03-tokens-and-language.md). For customizing these models, see
-[Topic 4](04-customizing-models.md).
+[Tokens & Language](03-tokens-and-language.md). For customizing these models, see
+[Customizing Models](04-customizing-models.md).
 
 ## Part A — Foundation Models & LLMs (the "what")
 
@@ -98,12 +98,12 @@ judge the input they are handed.
 
 !!! note "How are discriminative models trained?"
     Usually **supervised** — you need labelled examples ("this photo is a cat") for the
-    model to learn where the boundary between classes lies. But not *only* supervised: a
-    discriminative model can also be trained **self-supervised**, where the data creates
-    its own labels. BERT is the classic example — it learns by predicting masked words in
-    raw text, yet its job is to *understand and classify*, not generate. So the split is
-    supervised vs. self-supervised, not "supervised and unsupervised". Pure unsupervised
-    learning has no labels at all, so it is not how you train a classifier.
+    model to learn where the boundary between classes lies. But labels don't always have
+    to be hand-made: **self-supervised** pre-training (labels the data creates for itself)
+    is common too. BERT is the classic case — it pre-trains by predicting masked words in
+    raw text, then that understanding is fine-tuned for classifying and extracting, not
+    generating. What discriminative models don't use is *pure* unsupervised learning: with
+    no target answers at all, there is nothing to learn the class boundary from.
 
 !!! note "Why GenAI models are generative"
     They don't just classify — they produce new text, images, audio, video, code.
@@ -213,3 +213,14 @@ that learned denoising in reverse until a clean image emerges.
 !!! info
     Unlike LLMs (which generate token by token), diffusion models generate the **whole
     image at once** through a series of denoising steps.
+
+## Key Takeaways
+
+- A **Foundation Model** is a large, broadly pre-trained model you adapt rather than
+  build from scratch; an **LLM** is a foundation model specialised for text.
+- Not all foundation models generate — some only analyse (e.g. BERT). The dividing line
+  is discriminative (judge) vs. generative (create).
+- **LLMs generate text token by token**, sampling the next word by probability — which
+  is why output is non-deterministic and why *temperature* matters.
+- **Image generation uses diffusion**: start from noise and denoise step by step into a
+  whole image. Reading an image and describing it is a separate, understanding task.
